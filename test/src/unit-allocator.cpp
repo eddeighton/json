@@ -46,6 +46,12 @@ struct bad_allocator : std::allocator<T>
     {
         throw std::bad_alloc();
     }
+    
+    template <class U>
+    struct rebind
+    {
+        using other = bad_allocator<U>;
+    };
 };
 } // namespace
 

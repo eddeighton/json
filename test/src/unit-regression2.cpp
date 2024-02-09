@@ -212,6 +212,12 @@ class my_allocator : public std::allocator<T>
 {
   public:
     using std::allocator<T>::allocator;
+    
+    template <class U>
+    struct rebind
+    {
+        using other = my_allocator<U>;
+    };
 };
 
 /////////////////////////////////////////////////////////////////////
